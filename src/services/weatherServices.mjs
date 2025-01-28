@@ -2,11 +2,12 @@ import axios from 'axios';
 import 'dotenv/config';
 
 export const fetchWeatherData = async (city) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPENWEATHER_API_KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`;
   try {
     const response = await axios.get(url);
     const { main, weather } = response.data;
-    console.log(response.data);
+
+    
     return {
       city,
       temperature: main.temp,
@@ -34,4 +35,3 @@ export const checkAlerts = (weatherData) => {
 
   return alerts;
 };
-fetchWeatherData("london").then(data => console.log(data));
