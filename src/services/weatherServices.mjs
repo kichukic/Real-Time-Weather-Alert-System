@@ -24,13 +24,13 @@ export const checkAlerts = (weatherData) => {
   const alerts = [];
 
   if (condition.toLowerCase().includes('rain')) {
-    alerts.push({ city, alertType: 'Rain' });
+    alerts.push({ city, alertType: 'Rain', });
   }
   if (temperature > 30) {
-    alerts.push({ city, alertType: 'High Temperature' });
+    alerts.push({ city, alertType: 'High Temperature' , temperature});
   }
   if (temperature < 10) {
-    alerts.push({ city, alertType: 'Low Temperature' });
+    alerts.push({ city, alertType: 'Low Temperature', temperature });
   }
 
   return alerts;

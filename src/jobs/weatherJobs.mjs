@@ -16,7 +16,11 @@ const runWeatherJob = () => {
         if (alerts.length > 0) {
           await Alert.insertMany(alerts);
           alerts.forEach(alert => {
-            console.log(`Alert: ${alert.alertType} detected in ${alert.city} at ${new Date()}`);
+            if(alert.alertType.includes('Rain')) {
+              console.log(`Alert: ${alert.alertType} detected in ${alert.city} at ${new Date()}`);
+            }else{
+              console.log(`Alert: ${alert.alertType} detected in ${alert.city} at ${new Date()} with temperature of ${alert.temperature}°C`);
+            }
           });
         }
       }
